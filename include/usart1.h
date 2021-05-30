@@ -9,6 +9,7 @@
 
 #include "stm32f10x.h"
 #include "stdio.h"
+#define PRINTF_USE_USART1
 
 /********************************************/
 /*Function: initialize USART1 peripheral    */

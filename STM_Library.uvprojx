@@ -437,6 +437,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\USART2.c</FilePath>
             </File>
+            <File>
+              <FileName>DMA_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\DMA_ADC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

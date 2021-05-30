@@ -3,6 +3,9 @@
 #include "exti.h"
 #include "usart1.h"
 #include "USART2.h"
+#include "SYSTick.h"
+#include "DMA_ADC.h"
+
 /* below header haven't been documented nor exampled*/
 /*
 #include "adc.h"
@@ -23,6 +26,7 @@ int main(void)
 {
 	/* Blink*/
 	/* uncomment to try on this!*/
+	/*
 	init_gpio_write(GPIOE, GPIO_Pin_5);
 	while(1){
   	set_gpio(GPIOE, GPIO_Pin_5, ON);
@@ -30,6 +34,7 @@ int main(void)
 		set_gpio(GPIOE, GPIO_Pin_5, OFF);
 		delay_ms(500);
 	}
+	*/
 	
 	/* GPIO.h example */
 	/* uncomment to try on this!*/
@@ -53,7 +58,6 @@ int main(void)
 	/* We use PRINTF_USE_USART1 macro to choose which USART we use to redirect printf/scanf*/
 	/* uncomment to try on this!*/
 	/*
-	#define PRINTF_USE_USART1
 	int num;
 	USART1_config();
 	while(1){
@@ -104,21 +108,43 @@ int main(void)
 	}
 	*/
 	
+	/* SysTick Usage Example
+	 * Demostrate the usage of SysTick Delay
+	 */
+	/*
+	USART1_config();
+	printf("SysTick Example \r\n");
+	struct SYSTime NowTime;
+	SYSTick_Start();
+	while(1){
+		SYSTick_delay_ms(500);
+		NowTime = SYSTick_CheckTime();
+		printf("now time %d, %d, %d \r\n", NowTime.sec, NowTime.ms, NowTime.us);
+	}
+	*/
+	
+	/* ADC1 and DMA example
+	 * PA0 for adc0, PA1 for adc1, PA2 for adc2
+	 */
+	/*
+	USART1_config();
+	u16* adc = DMA_ADC1_get_address();
+	DMA_ADC1_Start();
+	printf("ADC started \r\n");
+	while(1){
+		float adc0 = (float) adc[0]/4096*3.3;
+		float adc1 = (float) adc[1]/4096*3.3;
+		float adc2 = (float) adc[2]/4096*3.3;
+		printf("ADC ch0: %f, ch1: %f, ch2: %f \r\n", adc0, adc1, adc2);
+		delay_ms(500);
+	}
+	*/
+	
 	/* below codes haven't been documented nor exampled*/
 	/*
 	USART1_config();
-	SYSTick_Start();
 	//printf(" SYS \r\n");
 	//KEY_GPIO_Config();
-	//delay_10ms(500);
-	NowTime.sec = 0;
-	NowTime.ms = 0;
-	printf(" OK \r\n");
-	while(1){
-		delay_10ms(500);
-		NowTime = SYSTick_CheckTime();
-		printf("now time %d, %d \r\n", NowTime.sec, NowTime.ms);
-	}
 	
 	//Init_MPU();
 	printf(" OK \r\n");

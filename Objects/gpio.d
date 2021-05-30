@@ -1,4 +1,4 @@
-.\objects\gpio.o: GPIO.c
+.\objects\gpio.o: src\GPIO.c
 .\objects\gpio.o: .\include\GPIO.h
 .\objects\gpio.o: .\include\CMSIS\stm32f10x.h
 .\objects\gpio.o: .\include\CMSIS\core_cm3.h

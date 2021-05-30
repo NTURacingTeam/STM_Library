@@ -35,3 +35,5 @@
 .\objects\main.o: .\include\USART2.h
 .\objects\main.o: D:\Application\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: D:\Application\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: .\include\SYSTick.h
+.\objects\main.o: .\include\DMA_ADC.h

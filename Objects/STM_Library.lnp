@@ -1,6 +1,5 @@
 --cpu Cortex-M3
 ".\objects\adc.o"
-".\objects\bsp_led_key.o"
 ".\objects\exti.o"
 ".\objects\i2c.o"
 ".\objects\main.o"
@@ -11,6 +10,7 @@
 ".\objects\usart1.o"
 ".\objects\gpio.o"
 ".\objects\usart2.o"
+".\objects\dma_adc.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_bkp.o"

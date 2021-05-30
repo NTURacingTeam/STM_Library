@@ -1,4 +1,4 @@
-.\objects\usart2.o: USART2.c
+.\objects\usart2.o: src\USART2.c
 .\objects\usart2.o: .\include\USART2.h
 .\objects\usart2.o: .\include\CMSIS\stm32f10x.h
 .\objects\usart2.o: .\include\CMSIS\core_cm3.h

@@ -556,7 +556,7 @@ ork --depend=.\objects\startup_stm32f10x_hd.d -o.\objects\startup_stm32f10x_hd.
 o -I.\RTE\_Target_1 -ID:\Users\Brad\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\
 2.3.0\Device\Include -ID:\Application\Keil\ARM\CMSIS\Include --predefine="__EVA
 L SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 5
-29" --predefine="STM32F10X_HD SETA 1" --list=.\listings\startup_stm32f10x_hd.ls
+29" --predefine="STM32F10X_LD SETA 1" --list=.\listings\startup_stm32f10x_hd.ls
 t startup\startup_stm32f10x_hd.s
 
 

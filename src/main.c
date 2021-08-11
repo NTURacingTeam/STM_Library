@@ -5,6 +5,8 @@
 #include "USART2.h"
 #include "SYSTick.h"
 #include "DMA_ADC.h"
+#include "SPI.h"
+#include "NRF24L01.h"
 
 /* below header haven't been documented nor exampled*/
 /*
@@ -27,11 +29,11 @@ int main(void)
 	/* Blink*/
 	/* uncomment to try on this!*/
 	/*
-	init_gpio_write(GPIOE, GPIO_Pin_5);
+	init_gpio_write(GPIOC, GPIO_Pin_13);
 	while(1){
-  	set_gpio(GPIOE, GPIO_Pin_5, ON);
+  	set_gpio(GPIOC, GPIO_Pin_13, ON);
 		delay_ms(500);
-		set_gpio(GPIOE, GPIO_Pin_5, OFF);
+		set_gpio(GPIOC, GPIO_Pin_13, OFF);
 		delay_ms(500);
 	}
 	*/
@@ -188,6 +190,75 @@ int main(void)
 		delay_ms(500);
 	}
 	*/
+	/*
+	int master = 1;
+	USART1_config();
+	if (master){
+		SPI_Config(SPI_Mode_Master, 0, SPI_BaudRatePrescaler_2);
+		//SPI_Interrupt_Config();
+		int i=0;
+		while(1){
+			i=i+1;
+			SPI_I2S_SendData(SPI1,(uint16_t) i);
+			printf("SPIed \r\n");
+			delay_ms(1);
+		}
+	}
+	else{
+		SPI_Config(SPI_Mode_Slave, 0, SPI_BaudRatePrescaler_2);
+		SPI_Interrupt_Config();
+		while(1){}
+	}
+	*/
+	//nrf test
+	/*RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOB, ENABLE );
+	GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOB, &GPIO_InitStructure); 
+	GPIO_SetBits(GPIOB, GPIO_Pin_1);*/
+	
+	USART1_config();
+	uint8_t rxbuf[32];
+	uint8_t txbuf[32];
+	for(int i=0;i<32;i++){
+		txbuf[i] = 0xAB;
+	}
+	NRF_Init();
+	delay_ms(100);
+	int tflg = 1;
+	int f = NRF24L01_Check();
+	if(f==0){
+		printf("nrf connect success \r\n");
+		if(tflg == 0){
+			NRF24L01_RX_Mode();
+			while(1){
+				NRF24L01_RxPacket(rxbuf);
+				printf("receive: ");
+				for(int i=0;i<32;i++){
+					printf("%c",(char) rxbuf[i]);
+				}
+				printf("\r\n");
+			}
+		}
+		else{
+			NRF24L01_TX_Mode();
+			while(1){
+				//u8 txresult = NRF24L01_TxPacket(txbuf);
+				//printf("transmit result: %d \r\n",txresult);
+				printf("PB10: %d\r\n",GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10));
+			}
+			delay_ms(500);
+		}
+
+	}
+	else if(f==1){
+		printf("nrf connect failed \r\n");
+	}
+	else{
+		printf("wrong return \r\n");
+	}
 }
 
 void delay_ms(u16 nms)

@@ -11,6 +11,8 @@
 ".\objects\gpio.o"
 ".\objects\usart2.o"
 ".\objects\dma_adc.o"
+".\objects\nrf24l01.o"
+".\objects\spi.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_bkp.o"

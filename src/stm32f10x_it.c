@@ -183,6 +183,17 @@ void USART2_IRQHandler(void)
 	}
 }
 
+void SPI1_IRQHandler(void)
+{
+	uint16_t rcv_tmp = 0;
+	while(1)
+	{
+		while(SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_RXNE)== RESET);
+		rcv_tmp = SPI_I2S_ReceiveData(SPI1);
+		printf("This is %d \r\n",rcv_tmp);
+	}
+}   
+
 /**
   * @brief  This function handles External lines 9 to 5 interrupt request.
   * @param  None

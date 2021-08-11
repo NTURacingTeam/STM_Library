@@ -37,3 +37,5 @@
 .\objects\main.o: D:\Application\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: .\include\SYSTick.h
 .\objects\main.o: .\include\DMA_ADC.h
+.\objects\main.o: .\include\SPI.h
+.\objects\main.o: .\include\NRF24L01.h

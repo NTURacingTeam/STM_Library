@@ -7,10 +7,11 @@
 #ifndef _USART2_H
 #define _USART2_H
 
-#include "stm32f10x.h"
 #include <string.h>
+
 #include "stdio.h"
 #include "stdlib.h"
+#include "stm32f10x.h"
 
 /********************************************/
 /*Function: initialize USART2 peripheral    */
@@ -31,7 +32,7 @@ void USART2_PutChar(char c);
 /*Variables: string pointer and size        */
 /*Return: nothing #TODO: timeout            */
 /********************************************/
-void USART2_PutString(char *s);
+void USART2_PutString(char* s);
 
 /************************************************************************/
 /*Function: assign a queue to store received data from USART2 interrupt */

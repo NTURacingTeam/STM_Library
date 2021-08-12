@@ -13,10 +13,10 @@
 /*Structure: record the current time, access*/
 /*it via SYSTick_CheckTime method           */
 /********************************************/
-struct SYSTime{
-	uint16_t sec;
-	uint16_t ms;
-	uint16_t us;
+struct SYSTime {
+    uint16_t sec;
+    uint16_t ms;
+    uint16_t us;
 };
 
 /********************************************/

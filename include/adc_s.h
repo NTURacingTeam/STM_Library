@@ -34,30 +34,30 @@ void init_adc1_s() {
 uint16_t ADC1_Read_s(int c) {
     uint16_t ch;
     switch (c) {
-    case 0:
-        ch = ADC_Channel_0;
-        break;
-    case 1:
-        ch = ADC_Channel_1;
-        break;
-    case 2:
-        ch = ADC_Channel_2;
-        break;
-    case 3:
-        ch = ADC_Channel_3;
-        break;
-    case 4:
-        ch = ADC_Channel_4;
-        break;
-    case 5:
-        ch = ADC_Channel_5;
-        break;
-    case 17:
-        ch = ADC_Channel_17;
-        break;
+        case 0:
+            ch = ADC_Channel_0;
+            break;
+        case 1:
+            ch = ADC_Channel_1;
+            break;
+        case 2:
+            ch = ADC_Channel_2;
+            break;
+        case 3:
+            ch = ADC_Channel_3;
+            break;
+        case 4:
+            ch = ADC_Channel_4;
+            break;
+        case 5:
+            ch = ADC_Channel_5;
+            break;
+        case 17:
+            ch = ADC_Channel_17;
+            break;
     }
     ADC_RegularChannelConfig(ADC1, ch, 1, ADC_SampleTime_7Cycles5);
-    ADC_SoftwareStartConvCmd(ADC1, ENABLE);  // Start ADC conversion
+    ADC_SoftwareStartConvCmd(ADC1, ENABLE);            // Start ADC conversion
     while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)) {}  // Wait until ADC conversion finished
     return ADC_GetConversionValue(ADC1);
 }

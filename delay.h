@@ -1,14 +1,14 @@
 #include "stm32f10x.h"
 #include "stm32f10x_rcc.h"
 
-int multipliter;
+uint32_t multipliter;
 
 void init_delay(void){
 	RCC_ClocksTypeDef RCC_Clocks;
   RCC_GetClocksFreq(&RCC_Clocks);    /* get system clock */
   /* while loop takes 4 cycles */
   /* for 1 us delay, we need to divide with 4M */
-  multipliter = RCC_Clocks.HCLK_Frequency / 4000000; 
+  multipliter = RCC_Clocks.HCLK_Frequency / 8000000; 
 }
 
 void delayUs(uint32_t micros){

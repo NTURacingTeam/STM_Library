@@ -25,5 +25,3 @@
 .\objects\main.o: ems22.h
 .\objects\main.o: gpio.h
 .\objects\main.o: delay.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\main.o: spi.h

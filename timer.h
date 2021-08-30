@@ -1,7 +1,7 @@
 #include "stm32f10x.h"
 #include "stm32f10x_tim.h"
 
-void NVIC_Config(){
+void NVIC_Config_tim3(){
 	
 	NVIC_InitTypeDef NVIC_InitStructure;
   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0); // ???
@@ -27,6 +27,6 @@ void init_tim3(u16 arr, u16 psc){
 	TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);                       //開啟定時器中斷 配置nvic
   TIM_Cmd(TIM3,ENABLE);                                          //使能定時器
 	
-	NVIC_Config();
+	NVIC_Config_tim3();
 
 }

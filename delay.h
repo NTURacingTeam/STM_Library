@@ -8,7 +8,7 @@ void init_delay(void){
   RCC_GetClocksFreq(&RCC_Clocks);    /* get system clock */
   /* while loop takes 4 cycles */
   /* for 1 us delay, we need to divide with 4M */
-  multipliter = RCC_Clocks.HCLK_Frequency / 8000000; 
+  multipliter = RCC_Clocks.HCLK_Frequency / 8000001; 
 }
 
 void delayUs(uint32_t micros){
@@ -28,5 +28,5 @@ void delayUs(uint32_t micros){
  void delay(unsigned int nCount){
 	unsigned int i, j;
 	for (i = 0; i < nCount; i++)
-		for (j = 0; j < 0x2AFF; j++);
+		for (j = 0; j < 0x281F; j++);
 }

@@ -32,7 +32,7 @@ void EXTI3_IRQHandler(){
 int main (void){
 	
 //	init_adc_m();
-//	init_gpio_write(GPIOB, GPIO_Pin_8);
+//	init_gpio_write(GPIOA, GPIO_Pin_5);
 	init_ems22();
 	init_usart2();
 //	init_exti();
@@ -45,10 +45,16 @@ int main (void){
 	
 	while (1){
 		
-    ems22Read_2();
-		printf("%d ",pos2[0]);
-		printf("%d\n",pos2[1]);
-		delay(10);
+		
+		GPIO_SetBits(GPIOA, GPIO_Pin_5);
+		delayUs(50);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+		delayUs(50);
+		
+//    ems22Read_2();
+//		printf("%d ",pos2[0]);
+//		printf("%d\n",pos2[1]);
+//		delay(10);
 
 		
 		

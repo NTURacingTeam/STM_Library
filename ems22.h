@@ -137,7 +137,7 @@ void ems22Read_2()
 
 	GPIO_SetBits(ems22_gpiox_cc1, ems22_pin_cc1);
 	GPIO_SetBits(ems22_gpiox_cc2, ems22_pin_cc2);
-//	return pos2;
+
 }
 
 #endif
